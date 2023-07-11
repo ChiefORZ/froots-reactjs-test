@@ -15,14 +15,14 @@ export const usePhotos = () =>
 		queryKey: ['photos'],
 	});
 
-export const getPhotoByAlbum = async (albumId: string) => {
+export const getPhotoByAlbum = async (albumId: number) => {
 	const resourceUrl = `/photos${albumId && `?albumId=${albumId}`}`;
 	const res = await fetcher<Photo[]>(resourceUrl);
 
 	return res;
 };
 
-export const usePhotosByAlbum = (albumId: string) =>
+export const usePhotosByAlbum = (albumId: number) =>
 	useQuery<Photo[]>({
 		keepPreviousData: true,
 		queryFn: () => getPhotoByAlbum(albumId),

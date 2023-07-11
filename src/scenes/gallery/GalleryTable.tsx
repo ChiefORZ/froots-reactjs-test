@@ -5,9 +5,18 @@ import { MantineReactTable, MRT_ColumnDef } from 'mantine-react-table';
 import { useMemo } from 'react';
 import { Album } from '@/services/albums/types';
 import { IconChevronRight } from '@tabler/icons-react';
+import { User } from '@/services/users/types';
 
-export const GalleryTable = ({ data }: { data: Album[] }) => {
-	const columns = useMemo<MRT_ColumnDef<Album>[]>(
+interface ComputedAlbum extends Album {
+	user: User;
+}
+
+interface GalleryTableProps {
+	data: ComputedAlbum[];
+}
+
+export const GalleryTable = ({ data }: GalleryTableProps) => {
+	const columns = useMemo<MRT_ColumnDef<ComputedAlbum>[]>(
 		() => [
 			{
 				accessorKey: 'id',
@@ -15,8 +24,8 @@ export const GalleryTable = ({ data }: { data: Album[] }) => {
 				size: 0.2,
 			},
 			{
-				accessorKey: 'userId',
-				header: 'User ID',
+				accessorKey: 'user.name',
+				header: 'User',
 				size: 0.2,
 			},
 			{

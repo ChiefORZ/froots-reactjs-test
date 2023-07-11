@@ -1,23 +1,23 @@
 'use client';
 
 import { ImageCard } from '@/components/Card/ImageCard';
-import { Album } from '@/services/albums/types';
 import { Photo } from '@/services/photos/types';
+import { User } from '@/services/users/types';
 import { Grid } from '@mantine/core';
 
 interface PhotoGalleryProps {
-	album: Album;
 	photos: Photo[];
+	user: User;
 }
 
 export function PhotoGallery(props: PhotoGalleryProps) {
-	const { album, photos } = props;
+	const { photos, user } = props;
 	return (
 		<Grid>
 			{photos.map((photo) => (
 				<Grid.Col key={photo.id} md={3} sm={6}>
 					<ImageCard
-						author={`${album.userId}`}
+						author={user.name}
 						image={photo.thumbnailUrl}
 						title={photo.title}
 					/>
