@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, Paper, Text } from '@mantine/core';
+import { Anchor, Paper } from '@mantine/core';
 import { MantineReactTable, MRT_ColumnDef } from 'mantine-react-table';
 import { useMemo } from 'react';
 import { Album } from '@/services/albums/types';
@@ -21,28 +21,17 @@ export const GalleryTable = ({ data }: GalleryTableProps) => {
 			{
 				accessorKey: 'id',
 				header: 'ID',
-				size: 0.2,
+				size: 50,
 			},
 			{
 				accessorKey: 'user.name',
 				header: 'User',
-				size: 0.2,
+				size: 150,
 			},
 			{
-				Cell: ({ renderedCellValue }) => (
-					<Text
-						sx={{
-							overflow: 'hidden',
-							textOverflow: 'ellipsis',
-							whiteSpace: 'nowrap',
-						}}
-					>
-						{renderedCellValue}
-					</Text>
-				),
 				accessorKey: 'title',
 				header: 'Title',
-				size: 0.6,
+				size: 300,
 			},
 		],
 		[]
@@ -54,6 +43,7 @@ export const GalleryTable = ({ data }: GalleryTableProps) => {
 				columns={columns}
 				data={data}
 				enableRowActions
+				initialState={{ density: 'md' }}
 				mantinePaperProps={{ shadow: '0', withBorder: false }}
 				positionActionsColumn="last"
 				renderRowActions={({ row }) => (
