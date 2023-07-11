@@ -34,9 +34,6 @@ export function Header() {
 						<Logo />
 					</Link>
 				</Group>
-				<Button h={30} radius="xl">
-					Get early access
-				</Button>
 			</Container>
 		</MantineHeader>
 	);
