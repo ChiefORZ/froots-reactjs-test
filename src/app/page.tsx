@@ -1,36 +1,12 @@
-import { Footer } from '@/components/Footer/Footer';
-import { EmailSection } from '@/components/Landing/EmailSection';
-import { FeaturesSection } from '@/components/Landing/FeaturesSection';
-import { Header } from '@/components/Landing/Header';
-import { HeroSection } from '@/components/Landing/HeroSection';
-import { LandingContainer } from '@/components/Landing/LandingContainer';
+import { PageContainer } from '@/components/PageContainer/PageContainer';
+import { GalleryTable } from '@/scenes/gallery/GalleryTable';
+import { getAlbums } from '@/services/albums';
 
-export default function Page() {
+export default async function Page() {
+	const albums = await getAlbums();
 	return (
-		<LandingContainer>
-			<Header
-				links={[
-					{
-						label: 'Home',
-						link: '/about',
-					},
-					{
-						label: 'Features',
-						link: '/learn',
-					},
-					{
-						label: 'Pricing',
-						link: '/pricing',
-					},
-				]}
-			/>
-			<HeroSection />
-			<FeaturesSection
-				description="This project is an experiment to see how a modern admin application, with features like auth, API routes, and static pages would work in Next.js 13 app dir."
-				title="Features"
-			/>
-			<EmailSection />
-			<Footer />
-		</LandingContainer>
+		<PageContainer title="Gallery">
+			<GalleryTable data={albums} />
+		</PageContainer>
 	);
 }

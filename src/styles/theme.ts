@@ -3,6 +3,10 @@ import type { MantineThemeOverride } from '@mantine/core';
 
 // export your theme object
 export const theme: MantineThemeOverride = {
-	primaryColor: 'indigo',
+	// black: '#505050',
+	colors: {
+		teal: '#48a5ad',
+	},
+	primaryColor: 'teal',
 	primaryShade: 5,
 };

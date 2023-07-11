@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 export const api = axios.create({
-	baseURL: '/',
+	baseURL: 'https://jsonplaceholder.typicode.com/',
 });
 
 export const fetcher = async <Data>(url: string) => {

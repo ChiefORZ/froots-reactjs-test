@@ -1,15 +1,14 @@
 {
-	"name": "mantine-admin",
+	"name": "@chieforz/froots-reactjs-test",
 	"version": "1.0.0",
 	"description": "A Modern Admin Dashboard made with Mantine/React/NextJS!",
-	"author": "Joshua Lee <jotyy318@gmail.com>",
+	"author": "Sebastian Schaffernak <seb.schaffernak@gmail.com>",
 	"scripts": {
-		"build": "pnpm run partytown && next build",
+		"build": "next build",
 		"build-storybook": "storybook build",
 		"dev": "next dev",
 		"lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
 		"lint:fix": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix",
-		"partytown": "partytown copylib public/~partytown",
 		"pre-commit": "pnpm run lint",
 		"prepare": "husky install",
 		"pull": "git rebase origin main -i",
@@ -41,7 +40,6 @@
 		"extends": "@chieforz/eslint-config-tslint-react"
 	},
 	"dependencies": {
-		"@builder.io/partytown": "0.8.0",
 		"@emotion/react": "11.11.0",
 		"@emotion/styled": "11.11.0",
 		"@hookform/resolvers": "3.1.1",
@@ -59,7 +57,6 @@
 		"axios": "^1.4.0",
 		"chart.js": "^4.3.0",
 		"dayjs": "^1.11.8",
-		"framer-motion": "10.12.16",
 		"mantine-react-table": "1.0.0-beta.11",
 		"next": "13.4.5",
 		"next-compose-plugins": "2.2.1",

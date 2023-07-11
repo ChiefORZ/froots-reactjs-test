@@ -1,22 +1,18 @@
 import { Flex, Text, useMantineTheme } from '@mantine/core';
-interface Props {
-	width?: string;
-	height?: string;
-}
+import Image from 'next/image';
 
-export const Logo: React.FC<Props> = ({ width, height }) => {
+export const Logo: React.FC = () => {
 	const theme = useMantineTheme();
 	return (
 		<Flex align="center" direction="row" gap={4}>
+			<Image alt="froots" height={34} src="/froots-logo.webp" width={100} />
 			<Text
 				color={theme.colorScheme === 'light' ? 'dark' : 'white'}
-				fw="bolder"
+				fw="normal"
+				ml={8}
 				size="xl"
 			>
-				Mantine
-				<Text c="indigo" component="span" fw="normal">
-					Admin
-				</Text>
+				React.js Test
 			</Text>
 		</Flex>
 	);

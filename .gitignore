@@ -42,7 +42,4 @@ public/robots.txt
 public/sitemap.xml
 public/sitemap-0.xml
 
-# partytown
-public/~partytown
-
 .env
