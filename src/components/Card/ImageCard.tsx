@@ -89,7 +89,7 @@ export function ImageCard({
 				style={{
 					backgroundImage: `url(${image})`,
 					backgroundPosition: 'center',
-					backgroundSize: 'contain',
+					backgroundSize: 'cover',
 				}}
 			/>
 			<div className={classes.overlay} />

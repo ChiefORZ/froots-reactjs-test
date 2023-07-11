@@ -30,7 +30,7 @@ export function PhotoGallery(props: PhotoGalleryProps) {
 		<>
 			<Grid>
 				{photos.map((photo) => (
-					<Grid.Col key={photo.id} md={3} sm={6}>
+					<Grid.Col key={photo.id} md={3} sm={4} xs={6}>
 						<ImageCard
 							author={user.name}
 							id={photo.id}
@@ -44,7 +44,6 @@ export function PhotoGallery(props: PhotoGalleryProps) {
 			<Modal
 				onClose={closeImageModal}
 				opened={Boolean(modalImageId)}
-				// size={700}
 				sx={{
 					alignItems: 'center',
 					display: 'flex',
