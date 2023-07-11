@@ -12,7 +12,7 @@ export const Logo: React.FC = () => {
 				ml={8}
 				size="xl"
 			>
-				React.js Test
+				React.js Assignment
 			</Text>
 		</Flex>
 	);

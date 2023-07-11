@@ -22,6 +22,7 @@ const useStyles = createStyles((theme) => ({
 			theme.colorScheme === 'dark'
 				? theme.colors.dark[6]
 				: theme.colors.gray[0],
+		cursor: 'pointer',
 		height: rem(280),
 		position: 'relative',
 
@@ -85,7 +86,11 @@ export function ImageCard({
 		>
 			<div
 				className={classes.image}
-				style={{ backgroundImage: `url(${image})` }}
+				style={{
+					backgroundImage: `url(${image})`,
+					backgroundPosition: 'center',
+					backgroundSize: 'contain',
+				}}
 			/>
 			<div className={classes.overlay} />
 

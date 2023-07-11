@@ -2,14 +2,14 @@ import { AppProvider } from '@/app/provider';
 import RootLayoutClient from '@/app/layout.client';
 
 export const metadata = {
-	description: 'Froots React.js Test',
+	description: 'Froots React.js Assignment',
 	icons: {
 		icon: '/favicon.png',
 	},
 	keywords: ['froots', 'react', 'typescript', 'nextjs'],
 	title: {
-		default: 'Froots React.js Test',
-		template: '%s | Froots React.js Test',
+		default: 'Froots React.js Assignment',
+		template: '%s | Froots React.js Assignment',
 	},
 };
 
