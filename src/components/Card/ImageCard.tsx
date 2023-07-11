@@ -59,24 +59,29 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface ImageCardProps {
-	link?: string;
+	id: number;
 	image: string;
 	title: string;
 	author: string;
+	onClick: (imageId: number) => void;
 }
 
-export function ImageCard({ image, title, author, link }: ImageCardProps) {
+export function ImageCard({
+	id,
+	image,
+	title,
+	author,
+	onClick,
+}: ImageCardProps) {
 	const { classes, theme } = useStyles();
 
 	return (
 		<Card
 			className={classes.card}
-			component="a"
-			href={link}
+			onClick={(evt) => onClick(id)}
 			p="lg"
 			radius="md"
 			shadow="lg"
-			target="_blank"
 		>
 			<div
 				className={classes.image}
