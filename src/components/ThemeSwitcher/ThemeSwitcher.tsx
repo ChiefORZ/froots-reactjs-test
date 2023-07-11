@@ -1,4 +1,9 @@
-import { ColorScheme, Group, Radio, useMantineColorScheme } from '@mantine/core';
+import {
+	ColorScheme,
+	Group,
+	Radio,
+	useMantineColorScheme,
+} from '@mantine/core';
 import { useState } from 'react';
 
 export const ThemeSwitcher = () => {
@@ -7,17 +12,17 @@ export const ThemeSwitcher = () => {
 
 	return (
 		<Radio.Group
-			value={themeValue}
+			label="Theme Mode"
+			name="theme"
 			onChange={(value: ColorScheme) => {
 				setThemeValue(value);
 				toggleColorScheme(value);
 			}}
-			name="theme"
-			label="Theme Mode"
+			value={themeValue}
 		>
 			<Group mt="sm">
-				<Radio value="light" label="Light" />
-				<Radio value="dark" label="Dark" />
+				<Radio label="Light" value="light" />
+				<Radio label="Dark" value="dark" />
 			</Group>
 		</Radio.Group>
 	);

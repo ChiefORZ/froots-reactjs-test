@@ -15,20 +15,20 @@ import {
 	IconBrandYoutube,
 } from '@tabler/icons-react';
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
 	footer: {
-		marginTop: rem(120),
 		borderTop: `${rem(1)} solid ${
 			theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
 		}`,
+		marginTop: rem(120),
 	},
 
 	inner: {
+		alignItems: 'center',
 		display: 'flex',
 		justifyContent: 'space-between',
-		alignItems: 'center',
-		paddingTop: theme.spacing.xl,
 		paddingBottom: theme.spacing.xl,
+		paddingTop: theme.spacing.xl,
 
 		[theme.fn.smallerThan('xs')]: {
 			flexDirection: 'column',
@@ -49,10 +49,10 @@ export function Footer() {
 		<div className={classes.footer}>
 			<Container className={classes.inner}>
 				<Text color="dimmed" fz="sm">
-					Build by <Anchor href="https://github.com/jotyy">jotyy</Anchor>. Hosted on{' '}
-					<Anchor href="https://vercel.com">Vercel</Anchor>.
+					Build by <Anchor href="https://github.com/jotyy">jotyy</Anchor>.
+					Hosted on <Anchor href="https://vercel.com">Vercel</Anchor>.
 				</Text>
-				<Group spacing={0} className={classes.links} position="right" noWrap>
+				<Group className={classes.links} noWrap position="right" spacing={0}>
 					<ActionIcon size="lg">
 						<IconBrandTwitter size="1.05rem" stroke={1.5} />
 					</ActionIcon>

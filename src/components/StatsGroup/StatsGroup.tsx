@@ -15,7 +15,7 @@ import {
 	IconArrowUp,
 } from '@tabler/icons-react';
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
 	label: {
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 	},
@@ -28,14 +28,20 @@ interface StatsGroupProps {
 export function StatsGroup({ data }: StatsGroupProps) {
 	const { classes } = useStyles();
 	const theme = useMantineTheme();
-	const stats = data.map(stat => {
+	const stats = data.map((stat) => {
 		const DiffIcon = stat.diff > 0 ? IconArrowUpRight : IconArrowDownRight;
 
 		return (
 			<Paper key={stat.title} p="md" radius="md">
 				<Group position="apart">
 					<div>
-						<Text c="dimmed" tt="uppercase" fw={700} fz="xs" className={classes.label}>
+						<Text
+							c="dimmed"
+							className={classes.label}
+							fw={700}
+							fz="xs"
+							tt="uppercase"
+						>
 							{stat.title}
 						</Text>
 						<Text fw={700} fz="xl">
@@ -44,12 +50,12 @@ export function StatsGroup({ data }: StatsGroupProps) {
 					</div>
 				</Group>
 				<Text c="dimmed" fz="sm" mt="sm">
-					<Text component="span" c={stat.diff > 0 ? 'teal' : 'red'} fw={700}>
+					<Text c={stat.diff > 0 ? 'teal' : 'red'} component="span" fw={700}>
 						{stat.diff}%
 					</Text>{' '}
 					<DiffIcon
-						size="1rem"
 						color={stat.diff > 0 ? theme.colors.teal[6] : theme.colors.red[6]}
+						size="1rem"
 					/>
 				</Text>
 			</Paper>
@@ -57,7 +63,7 @@ export function StatsGroup({ data }: StatsGroupProps) {
 	});
 
 	return (
-		<SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+		<SimpleGrid breakpoints={[{ cols: 1, maxWidth: 'sm' }]} cols={3}>
 			{stats}
 		</SimpleGrid>
 	);

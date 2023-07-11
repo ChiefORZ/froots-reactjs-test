@@ -4,22 +4,24 @@ import { NavLinksGroup } from './NavLinksGroup';
 import { IconCalendarStats } from '@tabler/icons-react';
 
 const meta: Meta<typeof NavLinksGroup> = {
-	title: 'Components/NavLinksGroup',
 	component: NavLinksGroup,
-	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/7.0/react/writing-docs/docs-page
-	tags: ['autodocs'],
 	parameters: {
 		// More on how to position stories at: https://storybook.js.org/docs/7.0/react/configure/story-layout
 		layout: 'fullscreen',
 	},
+
+	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/7.0/react/writing-docs/docs-page
+	tags: ['autodocs'],
+
+	title: 'Components/NavLinksGroup',
 };
 
 export default meta;
 type Story = StoryObj<typeof NavLinksGroup>;
 
 const hasLinks = {
-	label: 'Releases',
 	icon: IconCalendarStats,
+	label: 'Releases',
 	links: [
 		{ label: 'Upcoming releases', link: '/' },
 		{ label: 'Previous releases', link: '/' },
@@ -32,8 +34,8 @@ export const HasLinks: Story = {
 };
 
 const noLinks = {
-	label: 'Releases',
 	icon: IconCalendarStats,
+	label: 'Releases',
 	link: '/',
 };
 

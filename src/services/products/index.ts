@@ -10,7 +10,7 @@ export const getProducts = async () => {
 
 export const useProducts = () =>
 	useQuery<Product[]>({
-		queryKey: ['products'],
-		queryFn: () => getProducts(),
 		keepPreviousData: true,
+		queryFn: () => getProducts(),
+		queryKey: ['products'],
 	});

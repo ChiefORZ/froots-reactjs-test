@@ -28,15 +28,15 @@ interface Props {
 	burger?: React.ReactNode;
 }
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
 	header: {
-		padding: theme.spacing.md,
+		alignItems: 'center',
+		boxShadow: '1px 1px 3px rgba(0, 0, 0, .25)',
 		color: theme.colorScheme === 'dark' ? theme.white : theme.black,
 		display: 'flex',
 		flexDirection: 'row',
-		alignItems: 'center',
 		justifyContent: 'space-between',
-		boxShadow: '1px 1px 3px rgba(0, 0, 0, .25)',
+		padding: theme.spacing.md,
 	},
 }));
 
@@ -45,19 +45,19 @@ export function AdminHeader({ burger }: Props) {
 	const [opened, { close, open }] = useDisclosure(false);
 
 	return (
-		<Header height={60} withBorder={false} className={classes.header}>
+		<Header className={classes.header} height={60} withBorder={false}>
 			{burger && burger}
 			<TextInput
+				icon={<IconSearch size="0.8rem" />}
 				placeholder="Search"
 				variant="filled"
-				icon={<IconSearch size="0.8rem" />}
 			/>
 			<Box sx={{ flex: 1 }} />
 			<ActionIcon onClick={open}>
 				<IconSettings size="1.25rem" />
 			</ActionIcon>
 
-			<Drawer opened={opened} onClose={close} title="Settings" position="right">
+			<Drawer onClose={close} opened={opened} position="right" title="Settings">
 				<Stack spacing="lg">
 					<ThemeSwitcher />
 					<DirectionSwitcher />

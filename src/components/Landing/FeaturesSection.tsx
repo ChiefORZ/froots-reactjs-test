@@ -21,33 +21,34 @@ import {
 
 export const featuresData = [
 	{
+		description: 'App dir, Routing, Layouts, Loading UI and API routes.',
 		icon: IconBrandNextjs,
 		title: 'Next.js',
-		description: 'App dir, Routing, Layouts, Loading UI and API routes.',
 	},
 	{
+		description: 'Server and Client Components. Use hook.',
 		icon: IconBrandReact,
 		title: 'React 18',
-		description: 'Server and Client Components. Use hook.',
 	},
 	{
+		description: 'ORM using Prisma and deployed on PlanetScale.',
 		icon: IconBrandPlanetscale,
 		title: 'Database',
-		description: 'ORM using Prisma and deployed on PlanetScale.',
 	},
 	{
+		description: 'UI components built using Mantine UI.',
 		icon: IconBrandMantine,
 		title: 'Components',
-		description: 'UI components built using Mantine UI.',
 	},
 	{
+		description: 'Authentication using NextAuth.js and middlewares.',
 		icon: IconBrandOauth,
 		title: 'Authentication',
-		description: 'Authentication using NextAuth.js and middlewares.',
 	},
 ];
 
 interface FeatureProps {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	icon: React.FC<any>;
 	title: React.ReactNode;
 	description: React.ReactNode;
@@ -55,48 +56,48 @@ interface FeatureProps {
 
 export function Feature({ icon: Icon, title, description }: FeatureProps) {
 	return (
-		<Paper shadow="md" px="lg" py="sm" radius="md" withBorder>
-			<ThemeIcon variant="light" size={60} radius={60}>
+		<Paper px="lg" py="sm" radius="md" shadow="md" withBorder>
+			<ThemeIcon radius={60} size={60} variant="light">
 				<Icon size="2rem" stroke={1.5} />
 			</ThemeIcon>
-			<Text mt="sm" mb={7} fw="600">
+			<Text fw="600" mb={7} mt="sm">
 				{title}
 			</Text>
-			<Text size="sm" color="dimmed" sx={{ lineHeight: 1.6 }}>
+			<Text color="dimmed" size="sm" sx={{ lineHeight: 1.6 }}>
 				{description}
 			</Text>
 		</Paper>
 	);
 }
 
-const useStyles = createStyles(theme => ({
-	wrapper: {
-		paddingTop: `calc(${theme.spacing.xl} * 4)`,
-		paddingBottom: `calc(${theme.spacing.xl} * 4)`,
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-
-	title: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontWeight: 900,
-		lineHeight: 1.05,
-		fontSize: rem(64),
-
-		[theme.fn.smallerThan('md')]: {
-			maxWidth: '100%',
-			fontSize: rem(34),
-			lineHeight: 1.15,
-		},
-	},
-
+const useStyles = createStyles((theme) => ({
 	description: {
 		textAlign: 'center',
 
 		[theme.fn.smallerThan('sm')]: {
 			textAlign: 'left',
 		},
+	},
+
+	title: {
+		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+		fontSize: rem(64),
+		fontWeight: 900,
+		lineHeight: 1.05,
+
+		[theme.fn.smallerThan('md')]: {
+			fontSize: rem(34),
+			lineHeight: 1.15,
+			maxWidth: '100%',
+		},
+	},
+
+	wrapper: {
+		alignItems: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		paddingBottom: `calc(${theme.spacing.xl} * 4)`,
+		paddingTop: `calc(${theme.spacing.xl} * 4)`,
 	},
 }));
 
@@ -112,27 +113,29 @@ export function FeaturesSection({
 	data = featuresData,
 }: FeaturesGridProps) {
 	const { classes } = useStyles();
-	const features = data.map((feature, index) => <Feature {...feature} key={index} />);
+	const features = data.map((feature, index) => (
+		<Feature {...feature} key={index} />
+	));
 
 	return (
 		<Container className={classes.wrapper}>
 			<Title className={classes.title}>{title}</Title>
 			<Space h="md" />
 
-			<Container size={560} p={0}>
-				<Text size="sm" className={classes.description}>
+			<Container p={0} size={560}>
+				<Text className={classes.description} size="sm">
 					{description}
 				</Text>
 			</Container>
 
 			<SimpleGrid
-				mt={60}
-				cols={3}
-				spacing="xl"
 				breakpoints={[
-					{ maxWidth: 'md', cols: 2, spacing: 'xl' },
-					{ maxWidth: 'sm', cols: 1, spacing: 'xl' },
+					{ cols: 2, maxWidth: 'md', spacing: 'xl' },
+					{ cols: 1, maxWidth: 'sm', spacing: 'xl' },
 				]}
+				cols={3}
+				mt={60}
+				spacing="xl"
 			>
 				{features}
 			</SimpleGrid>

@@ -11,11 +11,11 @@ interface ConfigStore {
 
 export const useConfigStore = create<ConfigStore>()(
 	persist(
-		set => ({
-			direction: 'ltr',
+		(set) => ({
 			colorScheme: 'light',
-			setDirection: (direction: 'ltr' | 'rtl') => set({ direction }),
+			direction: 'ltr',
 			setColorScheme: (colorScheme: ColorScheme) => set({ colorScheme }),
+			setDirection: (direction: 'ltr' | 'rtl') => set({ direction }),
 		}),
 		{ name: 'config-storage' }
 	)

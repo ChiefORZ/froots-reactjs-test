@@ -1,8 +1,13 @@
 import { AppProvider } from './provider';
 
 export const metadata = {
-	metadataBase: new URL('https://mantine-admin.vercel.app/'),
-	title: { default: 'Mantine Admin', template: '%s | Mantine Admin' },
+	authors: [
+		{
+			name: 'jotyy',
+			url: 'https://jotyy.vercel.app',
+		},
+	],
+	creator: 'jotyy',
 	description: 'A Modern Admin template build with Next.js 13/MantineUI',
 	keywords: [
 		'Next.js',
@@ -14,33 +19,32 @@ export const metadata = {
 		'Admin Panel',
 		'Admin UI',
 	],
-	authors: [
-		{
-			name: 'jotyy',
-			url: 'https://jotyy.vercel.app',
-		},
-	],
-	creator: 'jotyy',
+	manifest: 'https://mantine-admin.vercel.app/site.webmanifest',
+	metadataBase: new URL('https://mantine-admin.vercel.app/'),
 	openGraph: {
-		type: 'website',
-		locale: 'en_US',
-		url: 'https://mantine-admin.vercel.app',
-		site_name: 'Mantine Admin',
 		description: 'A Modern Admin template build with Next.js 13/MantineUI',
-		siteName: 'Mantine Admin',
 		images: '/static/images/banner.png',
+		locale: 'en_US',
+		siteName: 'Mantine Admin',
+		site_name: 'Mantine Admin',
+		type: 'website',
+		url: 'https://mantine-admin.vercel.app',
 	},
+	title: { default: 'Mantine Admin', template: '%s | Mantine Admin' },
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Mantine Admin',
+		creator: '@jotyy3',
 		description: 'A Modern Admin template build with Next.js 13/MantineUI',
 		images: ['https://mantine-admin.vercel.app/static/images/banner.png'],
-		creator: '@jotyy3',
+		title: 'Mantine Admin',
 	},
-	manifest: 'https://mantine-admin.vercel.app/site.webmanifest',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
 		<html lang="en-US">
 			<head />

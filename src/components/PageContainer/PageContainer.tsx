@@ -27,18 +27,18 @@ export const PageContainer: FC<PageContainerProps> = ({
 	const titleColor = theme.colorScheme === 'dark' ? 'gray' : 'dark';
 
 	return (
-		<Container px={0} fluid={fluid}>
+		<Container fluid={fluid} px={0}>
 			{items && items.length > 0 ? (
 				<Breadcrumbs>
-					{items.map(item => (
-						<Anchor key={item.label} href={item.href}>
+					{items.map((item) => (
+						<Anchor href={item.href} key={item.label}>
 							{item.label}
 						</Anchor>
 					))}
 				</Breadcrumbs>
 			) : null}
 
-			<Title order={4} color={titleColor}>
+			<Title color={titleColor} order={4}>
 				{title}
 			</Title>
 

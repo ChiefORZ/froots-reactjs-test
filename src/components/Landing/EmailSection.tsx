@@ -1,21 +1,33 @@
 'use client';
 
-import { Button, Image, Text, TextInput, Title, createStyles } from '@mantine/core';
+import {
+	Button,
+	Image,
+	Text,
+	TextInput,
+	Title,
+	createStyles,
+} from '@mantine/core';
 
-const useStyles = createStyles(theme => ({
-	wrapper: {
-		maxWidth: 1200,
-		margin: 'auto',
-		marginTop: `calc(${theme.spacing.xl} * 4)`,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'space-around',
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+const useStyles = createStyles((theme) => ({
+	body: {
+		maxWidth: '50%',
+		paddingRight: `calc(${theme.spacing.xl} * 4)`,
 
 		[theme.fn.smallerThan('sm')]: {
-			flexDirection: 'column-reverse',
-			padding: theme.spacing.xl,
+			marginTop: theme.spacing.xl,
+			paddingRight: 0,
 		},
+	},
+
+	control: {
+		borderBottomLeftRadius: 0,
+		borderTopLeftRadius: 0,
+	},
+
+	controls: {
+		display: 'flex',
+		marginTop: theme.spacing.xl,
 	},
 
 	image: {
@@ -26,14 +38,15 @@ const useStyles = createStyles(theme => ({
 		},
 	},
 
-	body: {
-		maxWidth: '50%',
-		paddingRight: `calc(${theme.spacing.xl} * 4)`,
+	input: {
+		borderBottomRightRadius: 0,
+		borderRight: 0,
+		borderTopRightRadius: 0,
+	},
 
-		[theme.fn.smallerThan('sm')]: {
-			paddingRight: 0,
-			marginTop: theme.spacing.xl,
-		},
+	inputWrapper: {
+		flex: '1',
+		width: '100%',
 	},
 
 	title: {
@@ -43,25 +56,20 @@ const useStyles = createStyles(theme => ({
 		marginBottom: theme.spacing.md,
 	},
 
-	controls: {
+	wrapper: {
 		display: 'flex',
-		marginTop: theme.spacing.xl,
-	},
+		margin: 'auto',
+		alignItems: 'center',
+		maxWidth: 1200,
+		backgroundColor:
+			theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+		marginTop: `calc(${theme.spacing.xl} * 4)`,
+		justifyContent: 'space-around',
 
-	inputWrapper: {
-		width: '100%',
-		flex: '1',
-	},
-
-	input: {
-		borderTopRightRadius: 0,
-		borderBottomRightRadius: 0,
-		borderRight: 0,
-	},
-
-	control: {
-		borderTopLeftRadius: 0,
-		borderBottomLeftRadius: 0,
+		[theme.fn.smallerThan('sm')]: {
+			flexDirection: 'column-reverse',
+			padding: theme.spacing.xl,
+		},
 	},
 }));
 
@@ -74,20 +82,24 @@ export function EmailSection() {
 				<Text fw={500} fz="lg" mb={5}>
 					Subscribe to our newsletter!
 				</Text>
-				<Text fz="sm" c="dimmed">
-					You will never miss important product updates, latest news and community QA
-					sessions. Our newsletter is once a week, every Sunday.
+				<Text c="dimmed" fz="sm">
+					You will never miss important product updates, latest news and
+					community QA sessions. Our newsletter is once a week, every Sunday.
 				</Text>
 
 				<div className={classes.controls}>
 					<TextInput
-						placeholder="Your email"
 						classNames={{ input: classes.input, root: classes.inputWrapper }}
+						placeholder="Your email"
 					/>
 					<Button className={classes.control}>Subscribe</Button>
 				</div>
 			</div>
-			<Image src="/static/images/img-email.svg" className={classes.image} alt="email" />
+			<Image
+				alt="email"
+				className={classes.image}
+				src="/static/images/img-email.svg"
+			/>
 		</div>
 	);
 }

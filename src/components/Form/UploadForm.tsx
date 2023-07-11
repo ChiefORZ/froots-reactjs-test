@@ -8,10 +8,10 @@ export const UploadForm = () => {
 	const theme = useMantineTheme();
 	return (
 		<Dropzone
-			onDrop={files => console.log('accepted files', files)}
-			onReject={files => console.log('rejected files', files)}
-			maxSize={Math.sqrt(3 * 1024)}
 			accept={IMAGE_MIME_TYPE}
+			maxSize={Math.sqrt(3 * 1024)}
+			onDrop={(files) => console.log('accepted files', files)}
+			onReject={(files) => console.log('rejected files', files)}
 		>
 			<Group
 				position="center"
@@ -20,16 +20,20 @@ export const UploadForm = () => {
 			>
 				<Dropzone.Accept>
 					<IconUpload
+						color={
+							theme.colors[theme.primaryColor][
+								theme.colorScheme === 'dark' ? 4 : 6
+							]
+						}
 						size="3.2rem"
 						stroke={1.5}
-						color={theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6]}
 					/>
 				</Dropzone.Accept>
 				<Dropzone.Reject>
 					<IconX
+						color={theme.colors.red[theme.colorScheme === 'dark' ? 4 : 6]}
 						size="3.2rem"
 						stroke={1.5}
-						color={theme.colors.red[theme.colorScheme === 'dark' ? 4 : 6]}
 					/>
 				</Dropzone.Reject>
 				<Dropzone.Idle>
@@ -37,10 +41,10 @@ export const UploadForm = () => {
 				</Dropzone.Idle>
 
 				<div>
-					<Text size="xl" inline>
+					<Text inline size="xl">
 						Drag images here or click to select files
 					</Text>
-					<Text size="sm" color="dimmed" inline mt={7}>
+					<Text color="dimmed" inline mt={7} size="sm">
 						Attach as many files as you like, each file should not exceed 5mb
 					</Text>
 				</div>

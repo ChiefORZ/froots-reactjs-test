@@ -1,41 +1,44 @@
 {
 	"name": "mantine-admin",
 	"version": "1.0.0",
-	"author": "Joshua Lee <jotyy318@gmail.com>",
 	"description": "A Modern Admin Dashboard made with Mantine/React/NextJS!",
-	"lint-staged": {
-		"src/**/*.+(js|jsx|ts|tsx|json|md)": [
-			"pnpm run lint:fix"
-		]
+	"author": "Joshua Lee <jotyy318@gmail.com>",
+	"scripts": {
+		"build": "pnpm run partytown && next build",
+		"build-storybook": "storybook build",
+		"dev": "next dev",
+		"lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
+		"lint:fix": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix",
+		"partytown": "partytown copylib public/~partytown",
+		"pre-commit": "pnpm run lint",
+		"prepare": "husky install",
+		"pull": "git rebase origin main -i",
+		"push-release": "git push --follow-tags origin main",
+		"release": "standard-version",
+		"release-as-major": "pnpm run release --release-as major",
+		"release-as-minor": "pnpm run release --release-as minor",
+		"release-as-patch": "pnpm run release --release-as patch",
+		"start": "next start",
+		"storybook": "storybook dev -p 6006",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"type-check": "tsc --noEmit",
+		"up": "pnpm up --interactive",
+		"up-latest": "pnpm up --latest"
 	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
 	},
-	"scripts": {
-		"dev": "next dev",
-		"start": "next start",
-		"build": "pnpm run partytown && next build",
-		"partytown": "partytown copylib public/~partytown",
-		"lint": "next lint",
-		"lint:fix": "eslint src --fix && pnpm run format",
-		"test": "jest",
-		"test:watch": "jest --watch",
-		"type-check": "tsc --noEmit",
-		"format": "prettier --write src",
-		"up": "pnpm up --interactive",
-		"up-latest": "pnpm up --latest",
-		"release": "standard-version",
-		"release-as-major": "pnpm run release --release-as major",
-		"release-as-minor": "pnpm run release --release-as minor",
-		"release-as-patch": "pnpm run release --release-as patch",
-		"push-release": "git push --follow-tags origin main",
-		"pull": "git rebase origin main -i",
-		"pre-commit": "pnpm run lint",
-		"prepare": "husky install",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+	"lint-staged": {
+		"src/**/*.+(js|jsx|ts|tsx|json|md)": [
+			"eslint --fix"
+		]
+	},
+	"prettier": "@chieforz/prettier-config",
+	"eslintConfig": {
+		"extends": "@chieforz/eslint-config-tslint-react"
 	},
 	"dependencies": {
 		"@builder.io/partytown": "0.8.0",
@@ -72,6 +75,8 @@
 		"zustand": "4.3.8"
 	},
 	"devDependencies": {
+		"@chieforz/eslint-config-tslint-react": "^1.1.1",
+		"@chieforz/prettier-config": "^1.1.2",
 		"@commitlint/cli": "17.6.5",
 		"@commitlint/config-conventional": "17.6.5",
 		"@next/eslint-plugin-next": "13.4.5",

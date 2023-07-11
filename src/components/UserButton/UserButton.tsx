@@ -8,17 +8,19 @@ import {
 } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons-react';
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
 	user: {
-		display: 'block',
-		width: '100%',
-		padding: theme.spacing.md,
-		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-
 		'&:hover': {
 			backgroundColor:
-				theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+				theme.colorScheme === 'dark'
+					? theme.colors.dark[8]
+					: theme.colors.gray[0],
 		},
+		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+		display: 'block',
+		padding: theme.spacing.md,
+
+		width: '100%',
 	},
 }));
 
@@ -29,13 +31,19 @@ interface UserButtonProps extends UnstyledButtonProps {
 	icon?: React.ReactNode;
 }
 
-export function UserButton({ image, name, email, icon, ...others }: UserButtonProps) {
+export function UserButton({
+	image,
+	name,
+	email,
+	icon,
+	...others
+}: UserButtonProps) {
 	const { classes } = useStyles();
 
 	return (
 		<UnstyledButton className={classes.user} {...others}>
 			<Group>
-				<Avatar src={image} radius="xl" />
+				<Avatar radius="xl" src={image} />
 
 				<div style={{ flex: 1 }}>
 					<Text size="sm" weight={500}>

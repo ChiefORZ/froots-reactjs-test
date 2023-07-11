@@ -15,50 +15,50 @@ import {
 import { IconArrowRight, IconArrowUp } from '@tabler/icons-react';
 import { BalanceChart } from './BalanceChart';
 
-const useStyle = createStyles(theme => ({
+const useStyle = createStyles((theme) => ({
 	section: {
-		padding: theme.spacing.lg,
 		borderTop: `${rem(1)} solid ${
 			theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
 		}`,
-
 		display: 'flex',
+
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		padding: theme.spacing.lg,
 	},
 }));
 
 const BalanceLeftStack = () => (
 	<Stack spacing="lg" style={{ flex: 1 }}>
 		<Stack spacing={4}>
-			<Text size="xs" c="gray.6">
+			<Text c="gray.6" size="xs">
 				Availabel Balance
 			</Text>
 			<Space h={4} />
 			<Title order={2}>$ 9572.23</Title>
-			<Text size="sm" c="gray.5">
+			<Text c="gray.5" size="sm">
 				+ 0.0012.23(0.2%)
 				<span>
-					<IconArrowUp size={12} color="green" />
+					<IconArrowUp color="green" size={12} />
 				</span>
 			</Text>
 		</Stack>
 
 		<Group>
 			<Stack spacing={4}>
-				<Text size="sm" c="gray.6">
+				<Text c="gray.6" size="sm">
 					Income
 				</Text>
 				<Title order={4}>$ 5729.28</Title>
 			</Stack>
 			<Stack spacing={4}>
-				<Text size="sm" c="gray.6">
+				<Text c="gray.6" size="sm">
 					Expense
 				</Text>
 				<Title order={4}>$ 1329.89</Title>
 			</Stack>
 		</Group>
-		<Button size="sm" w={rem(140)} rightIcon={<IconArrowRight size={14} />}>
+		<Button rightIcon={<IconArrowRight size={14} />} size="sm" w={rem(140)}>
 			View more
 		</Button>
 	</Stack>
@@ -67,34 +67,34 @@ const BalanceLeftStack = () => (
 const BalanceRightStack = () => (
 	<Stack style={{ flex: 1 }}>
 		<Stack align="start">
-			<Text size="sm" c="gray.6">
+			<Text c="gray.6" size="sm">
 				Etherum
 			</Text>
 			<Title order={4}>
 				1.5236 ETH ={' '}
-				<Text component="span" size="md" fw="bold" c="gray.6">
+				<Text c="gray.6" component="span" fw="bold" size="md">
 					$1123.64
 				</Text>
 			</Title>
 		</Stack>
 		<Stack align="start">
-			<Text size="sm" c="gray.6">
+			<Text c="gray.6" size="sm">
 				Bitcoin
 			</Text>
 			<Title order={4}>
 				0.0236 BTC ={' '}
-				<Text component="span" size="md" fw="bold" c="gray.6">
+				<Text c="gray.6" component="span" fw="bold" size="md">
 					$923.64
 				</Text>
 			</Title>
 		</Stack>
 		<Stack align="start">
-			<Text size="sm" c="gray.6">
+			<Text c="gray.6" size="sm">
 				Doge
 			</Text>
 			<Title order={4}>
 				2210 DOGE ={' '}
-				<Text component="span" size="md" fw="bold" c="gray.6">
+				<Text c="gray.6" component="span" fw="bold" size="md">
 					$112.64
 				</Text>
 			</Title>
@@ -110,13 +110,13 @@ export function BalanceCard() {
 			<Card.Section className={classes.section}>
 				<Title order={5}>Wallet Balance</Title>
 				<Select
-					value="march"
-					size="sm"
-					withinPortal
 					data={[
-						{ value: 'march', label: 'March' },
-						{ value: 'april', label: 'April' },
+						{ label: 'March', value: 'march' },
+						{ label: 'April', value: 'april' },
 					]}
+					size="sm"
+					value="march"
+					withinPortal
 				/>
 			</Card.Section>
 			<Card.Section className={classes.section}>

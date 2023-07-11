@@ -17,48 +17,48 @@ type Person = {
 // nested data is ok, see accessorKeys in ColumnDef below
 const data: Person[] = [
 	{
+		address: '261 Battle Ford',
+		city: 'Columbus',
 		name: {
 			firstName: 'Zachary',
 			lastName: 'Davis',
 		},
-		address: '261 Battle Ford',
-		city: 'Columbus',
 		state: 'Ohio',
 	},
 	{
+		address: '566 Brakus Inlet',
+		city: 'Westerville',
 		name: {
 			firstName: 'Robert',
 			lastName: 'Smith',
 		},
-		address: '566 Brakus Inlet',
-		city: 'Westerville',
 		state: 'West Virginia',
 	},
 	{
+		address: '7777 Kuhic Knoll',
+		city: 'South Linda',
 		name: {
 			firstName: 'Kevin',
 			lastName: 'Yan',
 		},
-		address: '7777 Kuhic Knoll',
-		city: 'South Linda',
 		state: 'West Virginia',
 	},
 	{
+		address: '722 Emie Stream',
+		city: 'Huntington',
 		name: {
 			firstName: 'John',
 			lastName: 'Upton',
 		},
-		address: '722 Emie Stream',
-		city: 'Huntington',
 		state: 'Washington',
 	},
 	{
+		address: '1 Kuhic Knoll',
+		city: 'Ohiowa',
 		name: {
 			firstName: 'Nathan',
 			lastName: 'Harris',
 		},
-		address: '1 Kuhic Knoll',
-		city: 'Ohiowa',
 		state: 'Nebraska',
 	},
 ];
@@ -92,7 +92,7 @@ export const SimpleTable = () => {
 	);
 
 	return (
-		<Paper withBorder radius="md" p="md">
+		<Paper p="md" radius="md" withBorder>
 			<Title order={5}>Simple</Title>
 			<Space h="md" />
 			<MantineReactTable

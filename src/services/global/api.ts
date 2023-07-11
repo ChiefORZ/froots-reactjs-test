@@ -6,10 +6,10 @@ export const api = axios.create({
 
 export const fetcher = async <Data>(url: string) => {
 	const response = await api.request<Data, AxiosResponse<Data>>({
-		url,
 		headers: {
 			'Content-Type': 'application/json',
 		},
+		url,
 	});
 
 	return response.data as Data;

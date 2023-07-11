@@ -1,17 +1,45 @@
 'use client';
 
-import { Button, Container, Group, Text, Title, createStyles, rem } from '@mantine/core';
+import {
+	Button,
+	Container,
+	Group,
+	Text,
+	Title,
+	createStyles,
+	rem,
+} from '@mantine/core';
 import { IconArrowRight, IconStar } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
+	control: {
+		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+		fontSize: rem(18),
+		paddingLeft: rem(40),
+		paddingRight: rem(40),
+
+		[theme.fn.smallerThan('md')]: {
+			width: '100%',
+		},
+	},
+
+	description: {
+		maxWidth: rem(500),
+		opacity: 0.75,
+
+		[theme.fn.smallerThan('md')]: {
+			maxWidth: '100%',
+		},
+	},
+
 	inner: {
-		paddingTop: `calc(${theme.spacing.xl} * 4)`,
-		paddingBottom: `calc(${theme.spacing.xl} * 4)`,
-		display: 'flex',
-		justifyContent: 'space-between',
-		flexDirection: 'column',
 		alignItems: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		paddingBottom: `calc(${theme.spacing.xl} * 4)`,
+		paddingTop: `calc(${theme.spacing.xl} * 4)`,
 		textAlign: 'center',
 
 		[theme.fn.smallerThan('md')]: {
@@ -19,50 +47,30 @@ const useStyles = createStyles(theme => ({
 		},
 	},
 
-	title: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontWeight: 900,
-		lineHeight: 1.05,
-		fontSize: rem(64),
-
-		[theme.fn.smallerThan('md')]: {
-			maxWidth: '100%',
-			fontSize: rem(34),
-			lineHeight: 1.15,
-		},
-	},
-
 	subtitle: {
-		paddingTop: theme.spacing.xl,
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+		fontSize: rem(40),
 		fontWeight: 800,
 		lineHeight: 1.05,
-		fontSize: rem(40),
+		paddingTop: theme.spacing.xl,
 
 		[theme.fn.smallerThan('md')]: {
-			maxWidth: '100%',
 			fontSize: rem(26),
 			lineHeight: 1.15,
-		},
-	},
-
-	description: {
-		opacity: 0.75,
-		maxWidth: rem(500),
-
-		[theme.fn.smallerThan('md')]: {
 			maxWidth: '100%',
 		},
 	},
 
-	control: {
-		paddingLeft: rem(40),
-		paddingRight: rem(40),
+	title: {
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontSize: rem(18),
+		fontSize: rem(64),
+		fontWeight: 900,
+		lineHeight: 1.05,
 
 		[theme.fn.smallerThan('md')]: {
-			width: '100%',
+			fontSize: rem(34),
+			lineHeight: 1.15,
+			maxWidth: '100%',
 		},
 	},
 }));
@@ -75,9 +83,9 @@ export function HeroSection() {
 		<Container pt="sm" size="lg">
 			<div className={classes.inner}>
 				<Title
-					variant="gradient"
-					gradient={{ from: 'indigo', to: 'cyan' }}
 					className={classes.title}
+					gradient={{ from: 'indigo', to: 'cyan' }}
+					variant="gradient"
 				>
 					MantineAdmin
 				</Title>
@@ -86,32 +94,33 @@ export function HeroSection() {
 				</Title>
 
 				<Text className={classes.description} mt={30}>
-					Build fully functional dashboard web applications with ease – Mantine-Admin
-					includes all components and hooks to cover you in any situation
+					Build fully functional dashboard web applications with ease –
+					Mantine-Admin includes all components and hooks to cover you in any
+					situation
 				</Text>
 
 				<Group mt={40}>
 					<Button
-						variant="gradient"
-						gradient={{ from: 'indigo', to: 'cyan' }}
-						size="lg"
 						className={classes.control}
+						gradient={{ from: 'indigo', to: 'cyan' }}
 						onClick={() => {
 							router.push('/dashboard');
 						}}
 						rightIcon={<IconArrowRight />}
+						size="lg"
+						variant="gradient"
 					>
 						Get started
 					</Button>
 					<Button
-						variant="outline"
-						size="lg"
 						className={classes.control}
 						onClick={() => {
 							// open github
 							window.open('https://github.com/jotyy/mantine-admin');
 						}}
 						rightIcon={<IconStar />}
+						size="lg"
+						variant="outline"
 					>
 						Give a Star
 					</Button>

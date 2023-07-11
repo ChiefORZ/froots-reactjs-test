@@ -31,22 +31,22 @@ export function PaginationTable() {
 				header: 'Name',
 			},
 			{
+				accessorFn: (row) => `$${row.price.toFixed(2)}`,
 				accessorKey: 'price',
 				header: 'Price',
-				accessorFn: row => `$${row.price.toFixed(2)}`,
 			},
 			{
 				accessorKey: 'category',
 				header: 'Category',
 			},
 			{
+				Cell: ({ cell }) => (
+					<Rating defaultValue={cell.getValue<number>()} readOnly />
+				),
 				accessorKey: 'rating',
 				header: 'Reviews',
-				Cell: ({ cell }) => <Rating defaultValue={cell.getValue<number>()} readOnly />,
 			},
 			{
-				accessorKey: 'inventoryStatus',
-				header: 'Status',
 				Cell: ({ cell }) => {
 					const status = cell.getValue<'INSTOCK' | 'OUTOFSTOCK' | 'LOWSTOCK'>();
 					let color: 'red' | 'yellow' | 'green' = 'red';
@@ -54,7 +54,9 @@ export function PaginationTable() {
 					else if (status === 'LOWSTOCK') color = 'yellow';
 					return <Badge color={color}>{status}</Badge>;
 				},
+				accessorKey: 'inventoryStatus',
 				filterVariant: 'select',
+				header: 'Status',
 				mantineFilterSelectProps: {
 					data: [
 						{ label: 'In Stock', value: 'INSTOCK' },
@@ -68,28 +70,28 @@ export function PaginationTable() {
 	);
 
 	return (
-		<Paper withBorder radius="md" p="md" mt="lg">
+		<Paper mt="lg" p="md" radius="md" withBorder>
 			<Title order={5}>Pagintion Example</Title>
 			<Space h="md" />
 			<MantineReactTable
 				columns={columns}
 				data={data ?? []}
-				initialState={{ density: 'md' }}
 				enableDensityToggle={false}
-				mantinePaperProps={{ shadow: '0', withBorder: false }}
-				mantineFilterTextInputProps={{
-					sx: { borderBottom: 'unset', marginTop: '8px' },
-					variant: 'filled',
-				}}
+				initialState={{ density: 'md' }}
 				mantineFilterSelectProps={{
 					sx: { borderBottom: 'unset', marginTop: '8px' },
 					variant: 'filled',
 				}}
+				mantineFilterTextInputProps={{
+					sx: { borderBottom: 'unset', marginTop: '8px' },
+					variant: 'filled',
+				}}
+				mantinePaperProps={{ shadow: '0', withBorder: false }}
 				mantineToolbarAlertBannerProps={
 					isError
 						? {
-								color: 'error',
 								children: 'Error fetching data',
+								color: 'error',
 						  }
 						: undefined
 				}

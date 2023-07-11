@@ -3,7 +3,14 @@
 import { AdminHeader } from '@/components/Headers/AdminHeader';
 import { Navbar } from '@/components/Navbar/Navbar';
 import { navLinks } from '@/config';
-import { AppShell, Burger, Container, Footer, MediaQuery, Text } from '@mantine/core';
+import {
+	AppShell,
+	Burger,
+	Container,
+	Footer,
+	MediaQuery,
+	Text,
+} from '@mantine/core';
 import { useState } from 'react';
 
 interface Props {
@@ -15,36 +22,38 @@ export default function DashboardLayout({ children }: Props) {
 
 	return (
 		<AppShell
-			layout="alt"
-			sx={theme => ({
-				main: {
-					backgroundColor:
-						theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1],
-				},
-			})}
-			navbar={<Navbar data={navLinks} hidden={!opened} />}
-			navbarOffsetBreakpoint="sm"
+			footer={
+				<Footer height={50} p="md">
+					<Text align="center" color="gray" size="sm" w="full">
+						CopyRight © 2023 Jotyy
+					</Text>
+				</Footer>
+			}
 			header={
 				<AdminHeader
 					burger={
 						<MediaQuery largerThan="sm" styles={{ display: 'none' }}>
 							<Burger
-								opened={opened}
-								onClick={() => setOpened(o => !o)}
-								size="sm"
 								mr="xl"
+								onClick={() => setOpened((o) => !o)}
+								opened={opened}
+								size="sm"
 							/>
 						</MediaQuery>
 					}
 				/>
 			}
-			footer={
-				<Footer height={50} p="md">
-					<Text w="full" size="sm" align="center" color="gray">
-						CopyRight © 2023 Jotyy
-					</Text>
-				</Footer>
-			}
+			layout="alt"
+			navbar={<Navbar data={navLinks} hidden={!opened} />}
+			navbarOffsetBreakpoint="sm"
+			sx={(theme) => ({
+				main: {
+					backgroundColor:
+						theme.colorScheme === 'dark'
+							? theme.colors.dark[7]
+							: theme.colors.gray[1],
+				},
+			})}
 		>
 			<Container fluid>{children}</Container>
 		</AppShell>

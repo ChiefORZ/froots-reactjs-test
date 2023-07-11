@@ -1,15 +1,16 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const slide: any = {
-	initial: {
-		y: -10,
-		opacity: 0,
-	},
 	animate: {
-		y: 0,
 		opacity: 1,
+		y: 0,
 	},
 	exit: {
-		y: 10,
 		opacity: 0,
+		y: 10,
+	},
+	initial: {
+		opacity: 0,
+		y: -10,
 	},
 };
 

@@ -37,10 +37,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 					toggleColorScheme={toggleColorScheme}
 				>
 					<MantineProvider
-						withGlobalStyles
-						withNormalizeCSS
 						emotionCache={direction === 'rtl' ? rtlCache : undefined}
 						theme={{ ...theme, colorScheme, dir: direction }}
+						withGlobalStyles
+						withNormalizeCSS
 					>
 						<ModalsProvider>{children}</ModalsProvider>
 						<Notifications />

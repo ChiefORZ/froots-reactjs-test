@@ -11,23 +11,23 @@ export default function Page() {
 			<Header
 				links={[
 					{
-						link: '/about',
 						label: 'Home',
+						link: '/about',
 					},
 					{
-						link: '/learn',
 						label: 'Features',
+						link: '/learn',
 					},
 					{
-						link: '/pricing',
 						label: 'Pricing',
+						link: '/pricing',
 					},
 				]}
 			/>
 			<HeroSection />
 			<FeaturesSection
-				title="Features"
 				description="This project is an experiment to see how a modern admin application, with features like auth, API routes, and static pages would work in Next.js 13 app dir."
+				title="Features"
 			/>
 			<EmailSection />
 			<Footer />

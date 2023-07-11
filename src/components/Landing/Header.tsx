@@ -18,13 +18,44 @@ import { IconChevronDown } from '@tabler/icons-react';
 
 const HEADER_HEIGHT = rem(60);
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
+	burger: {
+		[theme.fn.largerThan('sm')]: {
+			display: 'none',
+		},
+	},
+
 	inner: {
-		height: HEADER_HEIGHT,
-		display: 'flex',
-		padding: `0 ${theme.spacing.xl}`,
-		justifyContent: 'space-between',
 		alignItems: 'center',
+		display: 'flex',
+		height: HEADER_HEIGHT,
+		justifyContent: 'space-between',
+		padding: `0 ${theme.spacing.xl}`,
+	},
+
+	link: {
+		'&:hover': {
+			backgroundColor:
+				theme.colorScheme === 'dark'
+					? theme.colors.dark[6]
+					: theme.colors.gray[0],
+		},
+		borderRadius: theme.radius.sm,
+		color:
+			theme.colorScheme === 'dark'
+				? theme.colors.dark[0]
+				: theme.colors.gray[7],
+		display: 'block',
+		fontSize: theme.fontSizes.sm,
+		fontWeight: 500,
+		lineHeight: 1,
+		padding: `${rem(8)} ${rem(12)}`,
+
+		textDecoration: 'none',
+	},
+
+	linkLabel: {
+		marginRight: rem(5),
 	},
 
 	links: {
@@ -32,43 +63,21 @@ const useStyles = createStyles(theme => ({
 			display: 'none',
 		},
 	},
-
-	burger: {
-		[theme.fn.largerThan('sm')]: {
-			display: 'none',
-		},
-	},
-
-	link: {
-		display: 'block',
-		lineHeight: 1,
-		padding: `${rem(8)} ${rem(12)}`,
-		borderRadius: theme.radius.sm,
-		textDecoration: 'none',
-		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-		fontSize: theme.fontSizes.sm,
-		fontWeight: 500,
-
-		'&:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-		},
-	},
-
-	linkLabel: {
-		marginRight: rem(5),
-	},
 }));
 
 interface HeaderActionProps {
-	links: { link: string; label: string; links?: { link: string; label: string }[] }[];
+	links: {
+		link: string;
+		label: string;
+		links?: { link: string; label: string }[];
+	}[];
 }
 
 export function Header({ links }: HeaderActionProps) {
 	const { classes } = useStyles();
 	const [opened, { toggle }] = useDisclosure(false);
-	const items = links.map(link => {
-		const menuItems = link.links?.map(item => (
+	const items = links.map((link) => {
+		const menuItems = link.links?.map((item) => (
 			<Menu.Item key={item.link}>{item.label}</Menu.Item>
 		));
 
@@ -76,15 +85,15 @@ export function Header({ links }: HeaderActionProps) {
 			return (
 				<Menu
 					key={link.label}
-					trigger="hover"
 					transitionProps={{ exitDuration: 0 }}
+					trigger="hover"
 					withinPortal
 				>
 					<Menu.Target>
 						<a
-							href={link.link}
 							className={classes.link}
-							onClick={event => event.preventDefault()}
+							href={link.link}
+							onClick={(event) => event.preventDefault()}
 						>
 							<Center>
 								<span className={classes.linkLabel}>{link.label}</span>
@@ -99,10 +108,10 @@ export function Header({ links }: HeaderActionProps) {
 
 		return (
 			<a
-				key={link.label}
-				href={link.link}
 				className={classes.link}
-				onClick={event => event.preventDefault()}
+				href={link.link}
+				key={link.label}
+				onClick={(event) => event.preventDefault()}
 			>
 				{link.label}
 			</a>
@@ -113,13 +122,18 @@ export function Header({ links }: HeaderActionProps) {
 		<MantineHeader height={HEADER_HEIGHT}>
 			<Container className={classes.inner} fluid>
 				<Group>
-					<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+					<Burger
+						className={classes.burger}
+						onClick={toggle}
+						opened={opened}
+						size="sm"
+					/>
 					<Logo />
 				</Group>
-				<Group spacing={5} className={classes.links}>
+				<Group className={classes.links} spacing={5}>
 					{items}
 				</Group>
-				<Button radius="xl" h={30}>
+				<Button h={30} radius="xl">
 					Get early access
 				</Button>
 			</Container>

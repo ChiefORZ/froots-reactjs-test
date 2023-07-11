@@ -7,12 +7,12 @@ import {
 } from '@tabler/icons-react';
 
 export const navLinks: NavItem[] = [
-	{ label: 'Dashboard', icon: IconDashboard, link: '/dashboard' },
+	{ icon: IconDashboard, label: 'Dashboard', link: '/dashboard' },
 
 	{
-		label: 'Components',
 		icon: IconComponents,
 		initiallyOpened: true,
+		label: 'Components',
 		links: [
 			{
 				label: 'Table',
@@ -25,9 +25,9 @@ export const navLinks: NavItem[] = [
 		],
 	},
 	{
-		label: 'Auth',
 		icon: IconLock,
 		initiallyOpened: true,
+		label: 'Auth',
 		links: [
 			{
 				label: 'Login',
@@ -40,9 +40,9 @@ export const navLinks: NavItem[] = [
 		],
 	},
 	{
-		label: 'Sample',
 		icon: IconMoodSmile,
 		initiallyOpened: true,
+		label: 'Sample',
 		links: [
 			{
 				label: 'Landing',

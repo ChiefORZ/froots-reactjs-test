@@ -10,12 +10,14 @@ interface LandingContainerProps {
 export function LandingContainer({ children }: LandingContainerProps) {
 	return (
 		<Box
-			sx={theme => ({
+			sx={(theme) => ({
+				background:
+					theme.colorScheme === 'light'
+						? theme.colors.gray[1]
+						: theme.colors.gray[9],
+				color: theme.colorScheme === 'light' ? theme.colors.dark : theme.white,
 				display: 'flex',
 				flexDirection: 'column',
-				color: theme.colorScheme === 'light' ? theme.colors.dark : theme.white,
-				background:
-					theme.colorScheme === 'light' ? theme.colors.gray[1] : theme.colors.gray[9],
 			})}
 		>
 			{children}

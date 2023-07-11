@@ -14,59 +14,69 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-const useStyles = createStyles(theme => ({
-	control: {
-		fontWeight: 500,
-		display: 'block',
-		width: '100%',
-		padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-		fontSize: theme.fontSizes.sm,
-		textDecoration: 'none',
-
-		'&:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-			color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-		},
-	},
-
+const useStyles = createStyles((theme) => ({
 	activeControl: {
 		color: theme.colors.indigo,
 	},
 
-	link: {
-		fontWeight: 500,
-		display: 'block',
-		textDecoration: 'none',
-		padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-		paddingLeft: rem(31),
-		marginLeft: rem(30),
-		fontSize: theme.fontSizes.sm,
-		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-		borderLeft: `${rem(1)} solid ${
-			theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
-		}`,
-
-		'&:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-			color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-		},
-	},
-
 	activeLink: {
 		backgroundColor:
-			theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+			theme.colorScheme === 'dark'
+				? theme.colors.dark[7]
+				: theme.colors.gray[0],
 		color: theme.colors.indigo,
 	},
 
 	chevron: {
 		transition: 'transform 200ms ease',
 	},
+
+	control: {
+		'&:hover': {
+			backgroundColor:
+				theme.colorScheme === 'dark'
+					? theme.colors.dark[7]
+					: theme.colors.gray[0],
+			color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+		},
+		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+		display: 'block',
+		fontSize: theme.fontSizes.sm,
+		fontWeight: 500,
+		padding: `${theme.spacing.xs} ${theme.spacing.md}`,
+		textDecoration: 'none',
+
+		width: '100%',
+	},
+
+	link: {
+		'&:hover': {
+			backgroundColor:
+				theme.colorScheme === 'dark'
+					? theme.colors.dark[7]
+					: theme.colors.gray[0],
+			color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+		},
+		borderLeft: `${rem(1)} solid ${
+			theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+		}`,
+		color:
+			theme.colorScheme === 'dark'
+				? theme.colors.dark[0]
+				: theme.colors.gray[7],
+		display: 'block',
+		fontSize: theme.fontSizes.sm,
+		fontWeight: 500,
+		marginLeft: rem(30),
+		padding: `${theme.spacing.xs} ${theme.spacing.md}`,
+		paddingLeft: rem(31),
+
+		textDecoration: 'none',
+	},
 }));
 
 interface LinksGroupProps {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	icon: React.FC<any>;
 	label: string;
 	link?: string;
@@ -87,14 +97,16 @@ export function NavLinksGroup({
 	const hasLinks = Array.isArray(links);
 	const [opened, setOpened] = useState(initiallyOpened || false);
 	const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft;
-	const items = (hasLinks ? links : []).map(link => {
+	const items = (hasLinks ? links : []).map((linkk) => {
 		return (
 			<Link
-				href={link.link}
-				key={link.label}
-				className={`${classes.link} ${link.link === pathname && classes.activeLink}`}
+				className={`${classes.link} ${
+					linkk.link === pathname && classes.activeLink
+				}`}
+				href={linkk.link}
+				key={linkk.label}
 			>
-				{link.label}
+				{linkk.label}
 			</Link>
 		);
 	});
@@ -103,12 +115,14 @@ export function NavLinksGroup({
 		<>
 			{link ? (
 				<Link
+					className={`${classes.control} ${
+						link === pathname && classes.activeControl
+					}`}
 					href={link}
-					className={`${classes.control} ${link === pathname && classes.activeControl}`}
 				>
 					<Group position="apart" spacing={0}>
-						<Box sx={{ display: 'flex', alignItems: 'center' }}>
-							<ThemeIcon variant="light" size={30}>
+						<Box sx={{ alignItems: 'center', display: 'flex' }}>
+							<ThemeIcon size={30} variant="light">
 								<Icon size="1.1rem" />
 							</ThemeIcon>
 							<Box ml="md">{label}</Box>
@@ -117,17 +131,17 @@ export function NavLinksGroup({
 				</Link>
 			) : (
 				<UnstyledButton
+					className={classes.control}
 					onClick={() => {
 						if (hasLinks) {
-							setOpened(o => !o);
+							setOpened((o) => !o);
 							return;
 						}
 					}}
-					className={classes.control}
 				>
 					<Group position="apart" spacing={0}>
-						<Box sx={{ display: 'flex', alignItems: 'center' }}>
-							<ThemeIcon variant="light" size={30}>
+						<Box sx={{ alignItems: 'center', display: 'flex' }}>
+							<ThemeIcon size={30} variant="light">
 								<Icon size="1.1rem" />
 							</ThemeIcon>
 							<Box ml="md">{label}</Box>

@@ -7,8 +7,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const schema = z.object({
-	name: z.string().min(1, { message: 'Username is required' }),
 	email: z.string().email('Email is not valid'),
+	name: z.string().min(1, { message: 'Username is required' }),
 });
 
 type User = z.infer<typeof schema>;
@@ -24,30 +24,30 @@ export const SimpleForm = () => {
 
 	const onSubmit = (data: User) =>
 		modals.openConfirmModal({
-			title: 'Register successfully',
 			children: <Text size="sm">{data.name}</Text>,
-			labels: { confirm: 'Confirm', cancel: 'Cancel' },
+			labels: { cancel: 'Cancel', confirm: 'Confirm' },
 			onConfirm: () => console.log('Confirmed'),
+			title: 'Register successfully',
 		});
 
 	return (
-		<Paper withBorder shadow="md" p="md" w="400px">
+		<Paper p="md" shadow="md" w="400px" withBorder>
 			<Box<'form'>>
 				<Text<'h2'> component="h2" fw="bold" fz="lg">
 					Register
 				</Text>
 				<TextInput
-					label="Username"
 					error={errors.name && errors.name.message}
+					label="Username"
 					{...register('name')}
 				/>
 				<Space h="sm" />
 				<TextInput
-					label="Email"
 					error={errors.email && errors.email.message}
+					label="Email"
 					{...register('email')}
 				/>
-				<Text component="p" color="gray" size="sm">
+				<Text color="gray" component="p" size="sm">
 					We will send you a confirmation email
 				</Text>
 				<Space h="md" />

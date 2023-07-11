@@ -15,12 +15,17 @@ export function LoginForm() {
 	const router = useRouter();
 
 	return (
-		<Paper withBorder shadow="md" p={30} mt={30} radius="md">
+		<Paper mt={30} p={30} radius="md" shadow="md" withBorder>
 			<TextInput label="Email" placeholder="test@example.com" required />
-			<PasswordInput label="Password" placeholder="Your password" required mt="md" />
-			<Group position="apart" mt="md">
+			<PasswordInput
+				label="Password"
+				mt="md"
+				placeholder="Your password"
+				required
+			/>
+			<Group mt="md" position="apart">
 				<Checkbox label="Remember me" />
-				<Anchor size="sm" href="#">
+				<Anchor href="#" size="sm">
 					Forgot Password？
 				</Anchor>
 			</Group>

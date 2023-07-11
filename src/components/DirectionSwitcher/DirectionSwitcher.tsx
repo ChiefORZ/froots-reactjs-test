@@ -6,14 +6,14 @@ export const DirectionSwitcher = () => {
 
 	return (
 		<Radio.Group
-			value={direction}
-			onChange={setDirection}
-			name="direction"
 			label="Direction"
+			name="direction"
+			onChange={setDirection}
+			value={direction}
 		>
 			<Group mt="sm">
-				<Radio value="ltr" label="LTR" />
-				<Radio value="rtl" label="RTL" />
+				<Radio label="LTR" value="ltr" />
+				<Radio label="RTL" value="rtl" />
 			</Group>
 		</Radio.Group>
 	);

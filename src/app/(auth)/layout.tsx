@@ -9,28 +9,28 @@ interface Props {
 export default function AuthLayout({ children }: Props) {
 	return (
 		<Center
-			sx={theme => ({
-				minHeight: '100vh',
-				color: theme.colorScheme === 'light' ? theme.colors.dark : theme.white,
+			sx={(theme) => ({
 				backgroundImage:
 					theme.colorScheme === 'light'
 						? 'linear-gradient(to top, #dfe9f3 0%, white 100%)'
 						: 'linear-gradient(to top, #1a202c 0%, #2d3748 100%)',
+				color: theme.colorScheme === 'light' ? theme.colors.dark : theme.white,
+				minHeight: '100vh',
 			})}
 		>
-			<Container size="xs" sx={{ width: 480, paddingBottom: 16 }}>
+			<Container size="xs" sx={{ paddingBottom: 16, width: 480 }}>
 				<Title
 					align="center"
-					sx={theme => ({
+					sx={(theme) => ({
 						fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 						fontWeight: 900,
 					})}
 				>
 					Mantine Admin
 				</Title>
-				<Text color="dimmed" size="sm" align="center" mt={5}>
+				<Text align="center" color="dimmed" mt={5} size="sm">
 					Don&apos;t have an account?{' '}
-					<Anchor size="sm" href="/register">
+					<Anchor href="/register" size="sm">
 						Sign Up
 					</Anchor>
 				</Text>
